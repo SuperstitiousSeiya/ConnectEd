@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- font awesome  -->
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
+    />
+
+    <!-- styles  -->
+    <link rel="stylesheet" href="../css/output.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <title>Document</title>
+  </head>
+  <body class="bg-semiBg overflow-y-hidden">
+    <!-- sidebar  -->
+    <div
+      id="sidebar"
+      class="bg-primary col-start-1 row-start-1 row-end-3 py-3 px-5 text-white flex flex-col gap-4 overflow-y-auto overflow-x-hidden max-w-[15rem] SCROLL"
+    >
+      <!-- logo container  -->
+      <div class="flex items-center justify-center logo-container">
+        <img src="../assets/images/logo.png" class="w-[200px]" alt="" />
+      </div>
+
+      <!-- user container  -->
+      <div class="flex flex-col justify-center items-center gap-2">
+        <img src="../assets/images/leonor.png" class="rounded-full" alt="" />
+        <p class="">Leonor Briones</p>
+        <div class="current underline underline-offset-2">ADMIN</div>
+      </div>
+
+      <div class="search-bar border px-4 py-2 flex gap-3 rounded-3xl h-fit">
+        <img
+          src="../assets/icons/searchBar.svg"
+          class="w-4 filter brightness-100 invert"
+          alt=""
+        />
+        <input
+          class="bg-transparent outline-none text-[0.75rem] w-[80%]"
+          placeholder="Type something here..."
+          type="text"
+          name="search-bar-input"
+          `
+          id="sidebar-search-bar-input"
+        />
+      </div>
+      <!-- links  -->
+      <ul class="links flex flex-col gap-4 mt-5">
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-gauge"></i>
+          <p>Dashboard</p>
+        </li>
+
+        <li class="flex flex-col dropdown group">
+          <div class="flex gap-4 items-center">
+            <i class="fa-regular fa-feather"></i>
+            <p>Post</p>
+
+            <i
+              class="fa-solid fa-chevron-right ml-auto transition-transform group-hover:rotate-90"
+            ></i>
+          </div>
+          <ul
+            class="text-sm pl-6 group-hover:mt-3 flex flex-col gap-2 h-0 overflow-hidden group-hover:h-20 transition-all"
+          >
+            <li class="flex gap-2 items-center">
+              <i class="fa-regular fa-bullhorn"></i>
+              <p>Announcement</p>
+            </li>
+            <li class="flex gap-2 items-center">
+              <i class="fa-regular fa-newspaper"></i>
+              <p>News</p>
+            </li>
+            <li class="flex gap-2 items-center">
+              <i class="fa-regular fa-calendar"></i>
+              <p>Event</p>
+            </li>
+          </ul>
+        </li>
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-file-pen"></i>
+          <p>Enroll</p>
+        </li>
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-users"></i>
+          <p>Students</p>
+        </li>
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-shield-quartered"></i>
+          <p>Administrator</p>
+        </li>
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-gear"></i>
+          <p>Settings</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- nav bar  -->
+    <div
+      id="navbar"
+      class="col-start-2 row-start-1 border-b flex justify-between px-5 py-3 items-center"
+    >
+      <div class="left-nav">
+        <i class="fa-regular fa-bars"></i>
+      </div>
+      <div class="right-nav flex items-center gap-7">
+        <i class="fa-regular fa-magnifying-glass"></i>
+        <i class="fa-regular fa-house"></i>
+        <i class="fa-regular fa-phone"></i>
+        <div class="account">
+          <img
+            src="../assets//images/leonor.png"
+            alt=""
+            class="w-10 border rounded-full"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- main  -->
+    <section id="main" class="p-10">
+      <h1
+        id="current-page-title"
+        class="text-primary font-semibold text-4xl border-b border-gray-700 mb-4"
+      >
+        POST
+      </h1>
+
+      <!-- enroll  -->
+
+      <section class="enroll flex flex-col gap-4" data-page="enroll">
+        <p class="border-2 border-black w-fit p-2">
+          Fill-out required information. DO NOT leave an item blank (indicate
+          N/A if item is not applicable)
+        </p>
+
+        <div class="flex gap-5">
+          <div class="input-group flex flex-col w-1/2">
+            <label for="course-id" class="text-black/40">Course</label>
+            <input
+              type="text"
+              id="couurse-id"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/2">
+            <label for="course-id" class="text-black/40"
+              >Student ID Number</label
+            >
+            <input
+              type="text"
+              id="couurse-id"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="flex flex-col gap-2">
+        <p class="mt-5">Please check:</p>
+
+        <div class="flex gap-6">
+          <p class="font-bold">Student Type:</p>
+          <div class="flex gap-4 checkmark-container">
+            <div>
+              <input
+                type="radio"
+                id="freshmen-checkbox"
+                name="student-type"
+                value="freshmen"
+              />
+              <label for="freshmen-checkbox">Freshmen</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="transferee-checkbox"
+                name="student-type"
+                value="transferee"
+              />
+              <label for="transferee-checkbox">Transferee</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="continuing-checkbox"
+                name="student-type"
+                value="continuing"
+              />
+              <label for="continuing-checkbox">Continuing Student</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="old-returnee-checkbox"
+                name="student-type"
+                value="old-returnee"
+              />
+              <label for="old-returnee-checkbox">Old Returnee</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- personal details wrapper   -->
+      <form class="wrapper flex flex-col gap-5 mt-5">
+        <h2 class="underline text-primary text-2xl font-bold mt-6">
+          Personal Details
+        </h2>
+        <!-- row 1  -->
+        <div class="flex gap-20 row-span-1 max-lg:flex-wrap">
+          <div class="input-group flex flex-col w-1/2 max-lg:w-full">
+            <label for="course-id" class="text-black/40">Course</label>
+            <input
+              type="text"
+              id="course-id"
+              name="course"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/2">
+            <label for="sex" class="text-black/40">Sex</label>
+            <div class="flex gap-6 items-center mt-3">
+              <div class="flex items-center gap-5">
+                <input type="radio" name="sex" value="male" id="male" />
+                <label for="male">Male</label>
+              </div>
+              <div class="flex items-center gap-5">
+                <input type="radio" name="sex" value="female" id="female" />
+                <label for="female">Female</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- row 2  -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-1/2">
+            <label for="last-name" class="text-black/40">Last name</label>
+            <input
+              type="text"
+              id="last-name"
+              name="last_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/2">
+            <label for="first-name" class="text-black/40">First name</label>
+            <input
+              type="text"
+              id="first-name"
+              name="first_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/2">
+            <label for="middle-name" class="text-black/40">Middle name</label>
+            <input
+              type="text"
+              id="middle-name"
+              name="middle_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+
+        <!-- row 3 -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-1/2">
+            <label for="date-of-birth" class="text-black/40"
+              >Date of Birth</label
+            >
+            <input
+              type="date"
+              id="date-of-birth"
+              name="date_of_birth"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/2">
+            <label for="religion" class="text-black/40">Religion</label>
+            <input
+              type="text"
+              id="religion"
+              name="religion"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+
+        <!-- row 4  -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-[80%]">
+            <label for="permanent-address" class="text-black/40"
+              >Permanent Address</label
+            >
+            <input
+              type="text"
+              id="permanent-address"
+              name="permanent_address"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/2">
+            <label for="postal-code" class="text-black/40">Postal code</label>
+            <input
+              type="number"
+              id="postal-code"
+              name="postal_code"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+
+        <!-- row 5  -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-[80%]">
+            <label for="current-address" class="text-black/40"
+              >Current Address</label
+            >
+            <input
+              type="text"
+              id="current-address"
+              name="current_address"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+          <div class="input-group flex flex-col w-1/2">
+            <label for="civil-status" class="text-black/40">Civil status</label>
+            <div class="flex gap-6 items-center mt-3">
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="civil_status"
+                  value="single"
+                  id="single"
+                />
+                <label for="single">Single</label>
+              </div>
+
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="civil_status"
+                  value="married"
+                  id="married"
+                />
+                <label for="married">Married</label>
+              </div>
+
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="civil_status"
+                  value="widow"
+                  id="widow"
+                />
+                <label for="widow">Widow</label>
+              </div>
+
+              <div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- row 6  -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-1/4">
+            <label for="father-name" class="text-black/40">Father's name</label>
+            <input
+              type="text"
+              id="father-name"
+              name="father_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-[4rem]">
+            <label for="father-age" class="text-black/40">Age</label>
+            <input
+              type="number"
+              id="father-age"
+              name="father_age"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="father-education" class="text-black/40"
+              >Educational Attainment</label
+            >
+            <input
+              type="text"
+              id="father-education"
+              name="father_education"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="father-occupation" class="text-black/40"
+              >Occupation</label
+            >
+            <input
+              type="text"
+              id="father-occupation"
+              name="father_occupation"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="father-contact" class="text-black/40"
+              >Contact Number</label
+            >
+            <input
+              type="text"
+              id="father-contact"
+              name="father_contact"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+
+        <!-- row 7  -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-1/4">
+            <label for="mother-name" class="text-black/40">Mother's name</label>
+            <input
+              type="text"
+              id="mother-name"
+              name="mother_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-[4rem]">
+            <label for="mother-age" class="text-black/40">Age</label>
+            <input
+              type="number"
+              id="mother-age"
+              name="mother_age"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="mother-education" class="text-black/40"
+              >Educational Attainment</label
+            >
+            <input
+              type="text"
+              id="mother-education"
+              name="mother_education"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="mother-occupation" class="text-black/40"
+              >Occupation</label
+            >
+            <input
+              type="text"
+              id="mother-occupation"
+              name="mother_occupation"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="mother-contact" class="text-black/40"
+              >Contact Number</label
+            >
+            <input
+              type="text"
+              id="mother-contact"
+              name="mother_contact"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+
+        <!-- row 8  -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-1/4">
+            <label for="guardian-name" class="text-black/40"
+              >Guardian's name</label
+            >
+            <input
+              type="text"
+              id="guardian-name"
+              name="guardian_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-[4rem]">
+            <label for="guardian-age" class="text-black/40">Age</label>
+            <input
+              type="number"
+              id="guardian-age"
+              name="guardian_age"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="guardian-education" class="text-black/40"
+              >Educational Attainment</label
+            >
+            <input
+              type="text"
+              id="guardian-education"
+              name="guardian_education"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="guardian-occupation" class="text-black/40"
+              >Occupation</label
+            >
+            <input
+              type="text"
+              id="guardian-occupation"
+              name="guardian_occupation"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="guardian-contact" class="text-black/40"
+              >Contact Number</label
+            >
+            <input
+              type="text"
+              id="guardian-contact"
+              name="guardian_contact"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+
+        <!-- row 9  -->
+        <div class="flex gap-6 row-2">
+          <div class="input-group flex flex-col w-1/4">
+            <label for="spouse-name" class="text-black/40">Spouse's Name</label>
+            <input
+              type="text"
+              id="spouse-name"
+              name="spouse_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-[4rem]">
+            <label for="spouse-age" class="text-black/40">Age</label>
+            <input
+              type="number"
+              id="spouse-age"
+              name="spouse_age"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="spouse-education" class="text-black/40"
+              >Educational Attainment</label
+            >
+            <input
+              type="text"
+              id="spouse-education"
+              name="spouse_education"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="spouse-occupation" class="text-black/40"
+              >Occupation</label
+            >
+            <input
+              type="text"
+              id="spouse-occupation"
+              name="spouse_occupation"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+
+          <div class="input-group flex flex-col w-1/4">
+            <label for="spouse-contact" class="text-black/40"
+              >Contact Number</label
+            >
+            <input
+              type="text"
+              id="spouse-contact"
+              name="spouse_contact"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+
+        <!-- row 9  -->
+
+        <div class="flex flex-col">
+          <p class="text-black/40 mb-2">
+            AVERAGE FAMILY INCOME (Monthly) please check one
+          </p>
+          <div class="input-group flex flex-col">
+            <div class="flex gap-6 items-center mt-3">
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="income"
+                  value="10000-below"
+                  id="income-1"
+                />
+                <label for="income-1">10,000 below</label>
+              </div>
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="income"
+                  value="10001-20000"
+                  id="income-2"
+                />
+                <label for="income-2">10,001 - 20,000</label>
+              </div>
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="income"
+                  value="20001-30000"
+                  id="income-3"
+                />
+                <label for="income-3">20,001 - 30,000</label>
+              </div>
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="income"
+                  value="30001-40000"
+                  id="income-4"
+                />
+                <label for="income-4">30,001 - 40,000</label>
+              </div>
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="income"
+                  value="40001-50000"
+                  id="income-5"
+                />
+                <label for="income-5">40,001 - 50,000</label>
+              </div>
+              <div class="flex items-center gap-5">
+                <input
+                  type="radio"
+                  name="income"
+                  value="50000-above"
+                  id="income-6"
+                />
+                <label for="income-6">50,000 above</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary block w-fit mx-auto">Next form</button>
+      </form>
+
+
+
+      <!-- contact details form  -->
+      <form class="wrapper flex flex-col gap-5 mt-6 lg:block hidden">
+        <h2 class="underline text-primary text-2xl font-bold mt-6 mb-6">
+          Contact Details
+        </h2>
+      
+        <div class="flex flex-col lg:flex-row gap-6 row-2">
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="email-address" class="text-black/40">Email address</label>
+            <input
+              type="text"
+              id="email-address"
+              name="email_address"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+      
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="cellphone-number" class="text-black/40">Cellphone Number</label>
+            <input
+              type="text"
+              id="cellphone-number"
+              name="cellphone_number"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+      </form>
+         
+
+
+    <!-- former schools  -->
+    <form class="wrapper flex flex-col gap-5 mt-5 hidden>
+      <h2 class="underline text-primary text-2xl font-bold mt-6">
+        Former Schools Details
+      </h2>
+    
+      <!-- Elementary -->
+      <div class="elementary">
+        <h2 class="text-black font-bold text-xl mb-5">Elementary</h2>
+        <div class="flex flex-col lg:flex-row gap-6 row-2">
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="elementary-school-name" class="text-black/40">
+              School name
+            </label>
+            <input
+              type="text"
+              id="elementary-school-name"
+              name="elementary_school_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="elementary-school-address" class="text-black/40">
+              Address
+            </label>
+            <input
+              type="text"
+              id="elementary-school-address"
+              name="elementary_school_address"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="elementary-inclusive-dates" class="text-black/40">
+              Include dates
+            </label>
+            <input
+              type="text"
+              id="elementary-inclusive-dates"
+              name="elementary_inclusive_dates"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+      </div>
+    
+      <!-- Junior High -->
+      <div class="junior-high">
+        <h2 class="text-black font-bold text-xl mb-5">Junior High</h2>
+        <div class="flex flex-col lg:flex-row gap-6 row-2">
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="junior-high-school-name" class="text-black/40">
+              School name
+            </label>
+            <input
+              type="text"
+              id="junior-high-school-name"
+              name="junior_high_school_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="junior-high-school-address" class="text-black/40">
+              Address
+            </label>
+            <input
+              type="text"
+              id="junior-high-school-address"
+              name="junior_high_school_address"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/2">
+            <label for="junior-high-inclusive-dates" class="text-black/40">
+              Include dates
+            </label>
+            <input
+              type="text"
+              id="junior-high-inclusive-dates"
+              name="junior_high_inclusive_dates"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+      </div>
+    
+      <!-- Senior High -->
+      <div class="senior-high">
+        <h2 class="text-black font-bold text-xl mb-5">Senior high</h2>
+        <div class="flex flex-col lg:flex-row gap-6 row-2">
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="senior-high-school-name" class="text-black/40">
+              School name
+            </label>
+            <input
+              type="text"
+              id="senior-high-school-name"
+              name="senior_high_school_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="senior-high-school-address" class="text-black/40">
+              Address
+            </label>
+            <input
+              type="text"
+              id="senior-high-school-address"
+              name="senior_high_school_address"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="senior-high-inclusive-dates" class="text-black/40">
+              Inclusive dates
+            </label>
+            <input
+              type="text"
+              id="senior-high-inclusive-dates"
+              name="senior_high_inclusive_dates"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="senior-high-strand" class="text-black/40">Strand</label>
+            <input
+              type="text"
+              id="senior-high-strand"
+              name="senior_high_strand"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+      </div>
+    
+      <!-- College -->
+      <div class="college">
+        <h2 class="text-black font-bold text-xl mb-5">College</h2>
+        <div class="flex flex-col lg:flex-row gap-6 row-2">
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="college-school-name" class="text-black/40">
+              School name
+            </label>
+            <input
+              type="text"
+              id="college-school-name"
+              name="college_school_name"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="college-school-address" class="text-black/40">
+              Address
+            </label>
+            <input
+              type="text"
+              id="college-school-address"
+              name="college_school_address"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="college-inclusive-dates" class="text-black/40">
+              Inclusive dates
+            </label>
+            <input
+              type="text"
+              id="college-inclusive-dates"
+              name="college_inclusive_dates"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+    
+          <div class="input-group flex flex-col w-full lg:w-1/3">
+            <label for="college-course" class="text-black/40">Course</label>
+            <input
+              type="text"
+              id="college-course"
+              name="college_course"
+              class="border rounded-sm border-black px-2 py-2 w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+    
+
+      <!-- post -->
+      <div class="post hidden" data-page="post">
+        <div
+          class="sub-current-pages flex gap-x-10 items-center mt-5 cursor-pointer"
+        >
+          <p
+            class="active-sub underline text-lg font-semibold"
+            data-table-target="announcement"
+          >
+            Announcement
+          </p>
+          <p class="active-sub text-lg font-semibold" data-table-target="news">
+            News
+          </p>
+          <p
+            class="active-sub text-lg font-semibold"
+            data-table-target="events"
+          >
+            Events
+          </p>
+        </div>
+      </div>
+
+      <table
+        id="table"
+        class="hidden mt-10 w-full border-primary/10 border shadow-md"
+      >
+        <tr class="trow bg-primary/20">
+          <th class="text-left">ID</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Created by</th>
+          <th>Date Created</th>
+          <th></th>
+        </tr>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td class="">Early Enrolllment</td>
+            <td class="">Lorem ipsum dol</td>
+            <td class="">Jane Doe</td>
+            <td class="">Date Created</td>
+            <td class="flex gap-2">
+              <button class="edit-row">Edit</button
+              ><button class="delete-row">Delete</button>
+            </td>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td class="">Early Enrolllment</td>
+            <td class="">Lorem ipsum dol</td>
+            <td class="">Jane Doe</td>
+            <td class="">Date Created</td>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td class="">Early Enrolllment</td>
+            <td class="">Lorem ipsum dol</td>
+            <td class="">Jane Doe</td>
+            <td class="">Date Created</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+
+
+
+
+    
+    <div id="modal fixed">
+      <div class="modal-content"></div>
+      <div class="moda-header"></div>
+    </div>
+  </body>
+</html>
