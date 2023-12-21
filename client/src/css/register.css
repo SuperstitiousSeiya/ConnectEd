@@ -1,0 +1,4 @@
+.input-group{
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+}

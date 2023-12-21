@@ -4,13 +4,32 @@
 
 
 .btn{
-    @apply px-4 py-2 rounded-md;
+    @apply px-6 py-2 rounded-md;
 }
-
+     
 .btn-primary{
     @apply bg-primary text-white
 }
 
 .btn-primary:hover{
     @apply bg-primary/95;
+}
+
+
+.btn-secondary{
+    @apply bg-secondary text-white rounded-lg px-4
+
+}
+
+.btn-secondary:hover{
+    @apply bg-secondary/95;
+}
+
+.btn-rounded{
+    border-radius: 2rem;
+}
+
+
+.btn-outline{
+    @apply border border-black bg-transparent
 }
