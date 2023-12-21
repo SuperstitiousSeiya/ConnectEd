@@ -6,12 +6,13 @@ const dbConn = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'sampleDB'
+    database: 'connected'
 })
 
 dbConn.connect((err)=>{
     if(err) throw err;
     console.log("Database Connected");
 })
+
 
 module.exports = dbConn;
