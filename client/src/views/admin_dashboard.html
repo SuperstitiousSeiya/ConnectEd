@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <!-- font awesome  -->
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
+    />
+
+    <!-- styles  -->
+    <link rel="stylesheet" href="../css/output.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/calendar.css" />
+
+    <!-- scripts  -->
+    <script src="../js/global/ajax.js" defer></script>
+    <script src="../js/admin/admin.js" defer></script>
+    <script src="../js/global/sidebar.js" defer></script>
+    <script src="../js/global/form.js" defer></script>
+    <script src="../js/global/formatter.js" defer></script>
+    <script src="../js/global/pageSwitcher.js" defer></script>
+    <script src="../js/admin/table.js" defer></script>
+    <script src="../js/admin/modal.js" defer></script>
+    <script src="../js/admin/renders.js" defer></script>
+    <script src="../js/admin/calendar.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body class="bg-semiBg overflow-y-hidden">
+    <!-- sidebar  -->
+    <div
+      id="sidebar"
+      class="bg-primary col-start-1 row-start-1 row-end-3 py-3 px-5 text-white flex flex-col gap-4 overflow-y-auto overflow-x-hidden max-w-[15rem]"
+    >
+      <!-- logo container  -->
+      <div class="flex items-center justify-center logo-container">
+        <img
+          src="../assets/images/logo.png"
+          class="w-[200px] filter brightness-0 invert"
+          alt=""
+        />
+      </div>
+
+      <!-- user container  -->
+      <div class="flex flex-col justify-center items-center gap-2">
+        <img src="../assets/images/leonor.png" class="rounded-full" alt="" />
+        <p class="">Leonor Briones</p>
+        <div class="current underline underline-offset-2">ADMIN</div>
+      </div>
+
+      <div class="search-bar border px-4 py-2 flex gap-3 rounded-3xl h-fit">
+        <img
+          src="../assets/icons/searchBar.svg"
+          class="w-4 filter brightness-100 invert"
+          id="img-logo"
+          alt=""
+        />
+        <input
+          class="bg-transparent outline-none text-[0.75rem] w-[80%]"
+          placeholder="Type something here..."
+          type="text"
+          name="search-bar-input"
+          `
+          id="sidebar-search-bar-input"
+        />
+      </div>
+
+      <!-- links  -->
+      <ul class="links flex flex-col gap-4 mt-5">
+        <li class="flex gap-4 items-center" data-page-target="dashboard">
+          <i class="fa-regular fa-gauge"></i>
+          <p>Dashboard</p>
+        </li>
+
+        <li class="flex flex-col dropdown group" data-page-target="post">
+          <div class="flex gap-4 items-center">
+            <i class="fa-regular fa-feather"></i>
+            <p>Post</p>
+
+            <i
+              class="fa-solid fa-chevron-right ml-auto transition-transform group-hover:rotate-90"
+            ></i>
+          </div>
+          <ul
+            class="text-sm pl-6 group-hover:mt-3 flex flex-col gap-2 h-0 overflow-hidden group-hover:h-20 transition-all"
+          >
+            <li
+              class="flex gap-2 items-center"
+              data-table-target="announcements"
+            >
+              <i class="fa-regular fa-bullhorn"></i>
+              <p>Announcement</p>
+            </li>
+            <li
+              class="flex gap-2 items-center"
+              data-table-target="announcements"
+            >
+              <i class="fa-regular fa-newspaper"></i>
+              <p>News</p>
+            </li>
+            <li
+              class="flex gap-2 items-center"
+              data-table-target="announcements"
+            >
+              <i class="fa-regular fa-calendar"></i>
+              <p>Event</p>
+            </li>
+          </ul>
+        </li>
+        <li class="flex gap-4 items-center" data-page-target="application">
+          <i class="fa-regular fa-file-pen"></i>
+          <p>Application</p>
+        </li>
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-users"></i>
+          <p>Students</p>
+        </li>
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-shield-quartered"></i>
+          <p>Administrator</p>
+        </li>
+        <li class="flex gap-4 items-center">
+          <i class="fa-regular fa-gear"></i>
+          <p>Settings</p>
+        </li>
+      </ul>
+    </div>
+
+    <!-- nav bar  -->
+    <div
+      id="navbar"
+      class="col-start-2 row-start-1 bg-white border-b flex justify-between px-5 py-3 items-center"
+    >
+      <div class="left-nav flex items-center gap-4">
+        <i
+          class="fa-regular fa-bars text-primary text-2xl cursor-pointer"
+          data-sidebar-toggle
+        ></i>
+        <h1 class="text-primary text-2xl font-bold" id="current-page">
+          Dashboard
+        </h1>
+      </div>
+      <div class="right-nav flex items-center gap-7 group">
+        <i class="fa-regular fa-magnifying-glass"></i>
+        <i class="fa-regular fa-house"></i>
+        <i class="fa-regular fa-phone"></i>
+        <div class="account relative">
+          <img
+            src="../assets//images/leonor.png"
+            alt=""
+            class="w-10 border rounded-full"
+          />
+          <div
+            class="dropdown group absolute pt-5 bg-white right-0 hidden group-hover:flex"
+          >
+            <div class="dropdown-content border-b">
+              <ul class="flex flex-col">
+                <li
+                  class="flex items-center gap-4 py-4 px-4 border-b cursor-pointer hover:bg-slate-100"
+                >
+                  <i class="fa-solid fa-gear"></i>
+                  <p class="whitespace-nowrap">Account Settings</p>
+                </li>
+                <a
+                  href="logout.html"
+                  class="flex items-center gap-4 py-4 px-4 cursor-pointer hover:bg-slate-100"
+                >
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  <p class="whitespace-nowrap">Logout</p>
+                </a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- main  -->
+    <section id="main" class="p-10">
+      <!-- celendar  -->
+
+      <!-- admin wrapper  -->
+      <section class="admin-main-wrapper grid gap-6" data-page="dashboard">
+        <div class="left col-start-1">
+          <div class="boxes flex gap-6 mb-4">
+            <div
+              class="box flex-1 bg-primary pt-10 px-7 pb-4 flex flex-col gap-4 items-center text-white rounded-[15px]"
+            >
+              <div class="">
+                <i
+                  class="fa-regular fa-graduation-cap text-4xl"
+                  aria-hidden="true"
+                ></i>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm">Total Students</p>
+                <h2
+                  class="font-semibold text-center text-2xl"
+                  data-info="total-students"
+                >
+                  ...
+                </h2>
+              </div>
+            </div>
+
+            <div
+              class="box flex-1 bg-primary pt-10 px-7 pb-4 flex flex-col gap-4 items-center text-white rounded-[15px]"
+            >
+              <div class="">
+                <i class="fa-regular fa-user text-4xl" aria-hidden="true"></i>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm">Total Teachers</p>
+                <h2 class="font-semibold text-center text-2xl">...</h2>
+              </div>
+            </div>
+
+            <div
+              class="box flex-1 bg-primary pt-10 px-7 pb-4 flex flex-col gap-4 items-center text-white rounded-[15px]"
+            >
+              <div class="">
+                <i class="fa-regular fa-grid-2 text-4xl"></i>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm" data-info="total-course">Total Courses</p>
+                <h2 class="font-semibold text-center text-2xl">...</h2>
+              </div>
+            </div>
+
+            <div
+              class="box flex-1 bg-primary pt-10 px-7 pb-4 flex flex-col gap-4 items-center text-white rounded-[15px]"
+            >
+              <div class="">
+                <i class="fa-regular fa-home text-4xl" aria-hidden="true"></i>
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <p class="text-sm">Total Faculty</p>
+                <h2 class="font-semibold text-center text-2xl">...</h2>
+              </div>
+            </div>
+          </div>
+
+          <!-- instructor assign add  -->
+          <div class="flex grid grid-cols-2 gap-6">
+            <!-- container 1  -->
+            <div
+              class="container max-w-[25rem] bg-white rounded-md flex flex-col gap-4 px-8 py-4"
+            >
+              <h1
+                class="px-4 py-2 bg-secondary text-white rounded-md w-fit block mx-auto font-bold text-xl"
+              >
+                ASSIGN INSTRUCTOR
+              </h1>
+              <form action="">
+                <p class="text-gray-500 mb-2">Basic Information</p>
+
+                <div class="inputs">
+                  <input
+                    type="text"
+                    class="w-full mb-4 rounded-3xl border-2 border-gray-500 px-4 py-1 font-medium text-lg"
+                    placeholder="Title"
+                  />
+                  <input
+                    type="text"
+                    class="w-full mb-4 rounded-3xl border-2 border-gray-500 px-4 py-1 font-medium text-lg"
+                    placeholder="Title"
+                  />
+                  <input
+                    type="text"
+                    class="w-full mb-4 rounded-3xl border-2 border-gray-500 px-4 py-1 font-medium text-lg"
+                    placeholder="Title"
+                  />
+                </div>
+
+                <!-- assign class  -->
+                <div class="assign-class mb-10 pl-4 cursor-pointer">
+                  <p class="text-sm text-gray-500">Assign Class</p>
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="flex justify-center items-center rounded-full p-2 w-3 h-3 text-white bg-secondary"
+                      >+</span
+                    >
+                    <p class="font-bold">Assign class</p>
+                  </div>
+                </div>
+
+                <button class="btn btn-secondary btn-rounded block mx-auto">
+                  Save
+                </button>
+              </form>
+            </div>
+
+            <!-- container 2  -->
+            <div
+              class="container max-w-[25rem] bg-white rounded-md flex flex-col gap-4 px-8 py-4"
+            >
+              <h1
+                class="px-4 py-2 bg-secondary text-white rounded-md w-fit block mx-auto font-bold text-xl"
+              >
+                ADD INSTRUCTOR
+              </h1>
+
+              <div
+                class="bg-semiBg rounded-sm flex items-center justify-between px-4 py-2"
+              >
+                <div class="flex gap-2 items-center">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <p class="font-bold text-sm">Mrs. Fergison</p>
+                </div>
+                <p class="text-gray-500 text-sm">Change</p>
+              </div>
+
+              <div>
+                <h3 class="underline text-bold mb-4">ASSIGNED CLASSES</h3>
+                <!-- assigned classes  -->
+                <div class="assigned-classes-container">
+                  <div
+                    class="bg-secondary/50 rounded-sm flex items-center justify-between px-4 py-2 gap-5"
+                  >
+                    <p class="font-bold text-sm">Physical Education 101</p>
+
+                    <div class="flex items-center gap-3">
+                      <div class="flex gap-2">
+                        <i class="fa-solid fa-users"></i>
+                        <p class="text-sm">31</p>
+                      </div>
+                      <p
+                        class="bg-secondary cursor-pointer h-6 w-6 text-white flex items-center justify-center rounded-full p-2"
+                      >
+                        +
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- add classes  -->
+              <div class="flex gap-2 block mx-auto mt-10">
+                <p
+                  class="bg-secondary cursor-pointer h-6 w-6 text-white flex items-center justify-center rounded-full p-2"
+                >
+                  +
+                </p>
+                <p class="text-sm font-bold cursor-pointer">Add class</p>
+              </div>
+
+              <button
+                class="mt-auto btn btn-secondary btn-rounded block mx-auto"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="right flex flex-col gap-6">
+          <div class="calendar-wrapper">
+            <header>
+              <p class="current-date"></p>
+              <div class="icons">
+                <span id="prev" class="material-symbols-rounded"
+                  >chevron_left</span
+                >
+                <span id="next" class="material-symbols-rounded"
+                  >chevron_right</span
+                >
+              </div>
+            </header>
+            <div class="calendar">
+              <ul class="weeks">
+                <li>S</li>
+                <li>M</li>
+                <li>T</li>
+                <li>W</li>
+                <li>Th</li>
+                <li>F</li>
+                <li>Sa</li>
+              </ul>
+              <ul class="days"></ul>
+            </div>
+          </div>
+
+          <div class="container bg-white px-4 py-2 rounded-md">
+            <h2 class="font-semibold text-center mb-4">ACTIVE CLASSES</h2>
+
+            <!-- search input  -->
+
+            <div
+              class="input-group border-2 rounded-md flex gap-3 px-2 py-1 items-center mb-6"
+            >
+              <i class="fa fa-search" aria-hidden="true"></i>
+              <input type="text" placeholder="Search class" />
+            </div>
+
+            <!-- active class container  -->
+            <div class="div flex flex-col gap-4">
+              <div
+                class="bg-secondary/50 rounded-sm flex items-center justify-between px-4 py-2 gap-5"
+              >
+                <p class="font-bold text-sm">Physical Education 101</p>
+
+                <div class="flex items-center gap-3">
+                  <div class="flex gap-2">
+                    <i class="fa-solid fa-users"></i>
+                    <p class="text-sm">31</p>
+                  </div>
+                  <p
+                    class="bg-secondary cursor-pointer h-6 w-6 text-white flex items-center justify-center rounded-full p-2"
+                  >
+                    +
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-secondary/50 rounded-sm flex items-center justify-between px-4 py-2 gap-5"
+              >
+                <p class="font-bold text-sm">Physical Education 101</p>
+
+                <div class="flex items-center gap-3">
+                  <div class="flex gap-2">
+                    <i class="fa-solid fa-users"></i>
+                    <p class="text-sm">31</p>
+                  </div>
+                  <p
+                    class="bg-secondary cursor-pointer h-6 w-6 text-white flex items-center justify-center rounded-full p-2"
+                  >
+                    +
+                  </p>
+                </div>
+              </div>
+              <div
+                class="bg-secondary/50 rounded-sm flex items-center justify-between px-4 py-2 gap-5"
+              >
+                <p class="font-bold text-sm">Physical Education 101</p>
+
+                <div class="flex items-center gap-3">
+                  <div class="flex gap-2">
+                    <i class="fa-solid fa-users"></i>
+                    <p class="text-sm">31</p>
+                  </div>
+                  <p
+                    class="bg-secondary cursor-pointer h-6 w-6 text-white flex items-center justify-center rounded-full p-2"
+                  >
+                    +
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottom col-span-2 row-start-2 gap-6">
+          <!-- Number of Students in each Courses  -->
+          <div class="container bg-white px-8 py-5 rounded-md">
+            <h2 class="font-bold underline text-2xl mb-5">
+              Number of Students in each Courses
+            </h2>
+
+            <table class="table w-full">
+              <tr class="">
+                <th class="text-left">Course</th>
+                <th class="text-right">Number of Students</th>
+              </tr>
+              <tbody class="table-body">
+                <tr>
+                  <td>BS Nursing</td>
+                  <td class="text-right text-primary pr-[4rem]">568</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="graph-container">
+            <div id="donutChart"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- post wrapper  -->
+      <div class="post hidden" data-page="post">
+        <div
+          class="sub-current-pages flex gap-x-10 items-center mt-5 cursor-pointer"
+        >
+          <p
+            class="active-sub text-lg font-semibold"
+            data-table-target="announcements"
+          >
+            Announcement
+          </p>
+          <p class="active-sub text-lg font-semibold" data-table-target="news">
+            News
+          </p>
+          <p
+            class="active-sub text-lg font-semibold"
+            data-table-target="events"
+          >
+            Events
+          </p>
+        </div>
+
+        <table
+          id="table"
+          class="mt-10 w-full border-primary/10 border shadow-md"
+        >
+          <tr class="theaders bg-primary/20">
+            <th class="text-left">ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Created by</th>
+            <th>Date Created</th>
+            <th></th>
+          </tr>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td class="">Early Enrolllment</td>
+              <td class="">Lorem ipsum dol</td>
+              <td class="">Jane Doe</td>
+              <td class="">Date Created</td>
+              <td class="flex gap-2">
+                <button class="edit-row">Edit</button
+                ><button class="delete-row">Delete</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td class="">Early Enrolllment</td>
+              <td class="">Lorem ipsum dol</td>
+              <td class="">Jane Doe</td>
+              <td class="">Date Created</td>
+            </tr>
+
+            <tr>
+              <td>1</td>
+              <td class="">Early Enrolllment</td>
+              <td class="">Lorem ipsum dol</td>
+              <td class="">Jane Doe</td>
+              <td class="">Date Created</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div data-page="application">
+        <div class="bg-white px-6 py-4 rounded-md mb-5">
+          <h1 class="text-2xl font-bold mb-4">
+            List of Students with Pending Applications <span class="text-sm">(Please click on student to view their information and enroll them)</span>
+          </h1>
+
+          <div
+            class="container-pending-students-list flex flex-col gap-4"
+            id="pending-students"
+  
+          >
+            <div
+              data-modal-target="enroll-student"
+              data-pending-id="1"
+              class="pending-student flex flex-items justify-between px-6 py-2 bg-accents hover:bg-accents/90 cursor-pointer rounded-lg"
+            >
+              <p class="font-bold">
+                Student id: <span class="text-primary">1</span>
+              </p>
+              <p class="font-bold">
+                Full name:
+                <span class="text-primary">Reyver Pascual Abellanosa</span>
+              </p>
+              <p class="font-bold">
+                Status: <span class="text-primary">Pending</span>
+              </p>
+              <p class="font-bold">
+                Course: <span class="text-primary text-sm">BSIT</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white px-6 py-4 rounded-md">
+          <h1 class="text-2xl font-bold mb-4">
+            Enrolled Students <span class="text-sm">(Please click on student to view their information)</span>
+          </h1>
+
+          <div
+            class="container-pending-students-list flex flex-col gap-4"
+            id="enrolled-students"
+  
+          >
+            <div
+              data-modal-target="enroll-student"
+              data-pending-id="1"
+              class="pending-student flex flex-items justify-between px-6 py-2 bg-accents hover:bg-accents/90 cursor-pointer rounded-lg"
+            >
+              <p class="font-bold">
+                Student id: <span class="text-primary">1</span>
+              </p>
+              <p class="font-bold">
+                Full name:
+                <span class="text-primary">Reyver Pascual Abellanosa</span>
+              </p>
+              <p class="font-bold">
+                Status: <span class="text-primary">Pending</span>
+              </p>
+              <p class="font-bold">
+                Course: <span class="text-primary text-sm">BSIT</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- modal  -->
+    <div
+      id="modal"
+      class="hidden fixed w-full top-0 h-full bg-gray-500/10 z-10 flex justify-center items-center"
+    >
+      <div
+        class="modal-content bg-white rounded-md min-w-[25rem] max-w-[97rem]"
+      >
+        <div
+          class="modal-header px-5 pt-5 pb-4 flex items-center border-b justify-between gap-5"
+        >
+          <h3 class="text-2xl font-bold" id="modal-title">Add Announcement</h3>
+          <div class="close-modal cursor-pointer" data-modal-close>X</div>
+        </div>
+
+        <!-- add announcement  -->
+        <form action="" class="px-5 py-5 hidden" data-modal="two-inputs">
+          <div class="input-group flex flex-col gap-2 mb-6">
+            <label for="">Title</label>
+            <input type="text" class="border border-black px-4" />
+          </div>
+
+          <div class="input-group flex flex-col gap-2 mb-6">
+            <label for="">Description</label>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="5"
+              class="border border-black px-4 py-2"
+            ></textarea>
+          </div>
+
+          <div class="buttons flex gap-4 justify-end">
+            <button type="button" class="btn-outline btn" data-modal-close>
+              Cancel
+            </button>
+            <button class="btn btn-secondary">Create</button>
+          </div>
+        </form>
+
+        <!-- Add event  -->
+        <form action="" class="px-5 py-5 hidden" data-modal="three-inputs">
+          <div class="flex items-center gap-4">
+            <div class="input-group flex flex-col gap-2 mb-6 w-1/2">
+              <label for="">Title</label>
+              <input type="text" class="border border-black px-4" />
+            </div>
+            <div class="input-group flex flex-col gap-2 mb-6 w-1/2">
+              <label for="">Event Date</label>
+              <input type="date" class="border border-black px-4" />
+            </div>
+          </div>
+
+          <div class="input-group flex flex-col gap-2 mb-6">
+            <label for="">Description</label>
+            <textarea
+              name=""
+              id=""
+              cols="30"
+              rows="5"
+              class="border border-black px-4 py-2"
+            ></textarea>
+          </div>
+
+          <div class="buttons flex gap-4 justify-end">
+            <button type="button" class="btn-outline btn" data-modal-close>
+              Cancel
+            </button>
+            <button class="btn btn-secondary">Create</button>
+          </div>
+        </form>
+
+        <!-- add student  -->
+        <form action="" class="hidden add-student-form px-5 py-5 flex gap-8">
+          <!-- img-container  -->
+          <div class="img-photo-container">
+            <h2 class="font-semibold text-xl mb-2">Student Photo</h2>
+            <div class="mb-4 w-[10rem]">
+              <img
+                src="../assets/icons/image-noload.png"
+                class="object-contain w-full"
+                alt=""
+              />
+            </div>
+            <div class="btn btn-secondary relative flex gap-2 cursor-pointer">
+              <i class="fas fa-image cursor-pointer"></i>
+              <p class="cursor-pointer">Upload Photo</p>
+              <input
+                type="file"
+                accept="image/png, image/gif, image/jpeg"
+                class="opacity-0 absolute left-0 w-full cursor-pointer"
+              />
+            </div>
+          </div>
+
+          <div class="student-information-wrapper">
+            <h2 class="font-semibold text-xl mb-2">Student Information</h2>
+
+            <!-- row 1 -->
+            <div class="input-row flex gap-4">
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">ID</label>
+                <input
+                  type="number"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">Student Number</label>
+                <input
+                  type="text"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold mb-2">Active Student</label>
+                <input type="checkbox" class="w-fit" />
+              </div>
+            </div>
+            <!-- row 2 -->
+            <div class="input-row flex gap-4">
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">Year Level</label>
+                <input
+                  type="number"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">Course</label>
+                <select
+                  name=""
+                  id=""
+                  class="border border-black rounded-md px-4 py-1"
+                >
+                  <option value=""></option>
+                </select>
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">Gender</label>
+                <select
+                  name=""
+                  id=""
+                  class="border border-black rounded-md px-4 py-1"
+                >
+                  <option value=""></option>
+                </select>
+              </div>
+            </div>
+            <!-- row 3 -->
+            <div class="input-row flex gap-4">
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">Last Name</label>
+                <input
+                  type="number"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">First Name</label>
+                <input
+                  type="text"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/3">
+                <label for="" class="font-bold">ID</label>
+                <input
+                  type="text"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+            </div>
+            <!-- row 4 -->
+            <div class="input-row flex gap-4">
+              <div class="input-group flex flex-col gap-1 mb-6 w-3/4">
+                <label for="" class="font-bold">Address</label>
+                <input
+                  type="number"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/4">
+                <label for="" class="font-bold">Date of Birth</label>
+                <input
+                  type="date"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="student-information-container"></div>
+        </form>
+
+        <!-- enroll student -->
+        <form
+          class="hidden enroll-student-form px-5 py-5 flex gap-8 max-w-[60rem]"
+          data-modal="enroll-student"
+          data-form-type="students"
+        data-form="UPDATE"
+        data-success="admin_dashboard.html"
+        id="enroll-student-form"
+        >
+          <!-- img-container  -->
+          <input type="hidden" name="id" id="user_student_id">
+
+        <input type="hidden" name="status" value="enrolled">
+
+
+          <div class="img-photo-container">
+            <h2 class="font-semibold text-xl mb-2">Student Photo</h2>
+            <div class="mb-4 w-[10rem]">
+              <img
+                src="../assets/icons/image-noload.png"
+                class="object-contain w-full"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div class="student-information-wrapper">
+            <h2 class="font-semibold text-xl mb-2">Student Information</h2>
+            <div
+              class="students-info-container flex flex-wrap gap-4"
+              id="students-info-container"
+            >
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Enroll Student
+            </button>
+          </div>
+
+          <div class="student-information-container"></div>
+        </form>
+
+
+        <!-- add admin user  -->
+
+        <form action="" class="hidden add-student-form px-5 py-5 flex gap-8">
+          <!-- img-container  -->
+          <div class="img-photo-container">
+            <h2 class="font-semibold text-xl mb-2">User Photo</h2>
+            <div class="mb-4 w-[10rem]">
+              <img
+                src="../assets/icons/image-noload.png"
+                class="object-contain w-full"
+                alt=""
+              />
+            </div>
+            <div class="btn btn-secondary relative flex gap-2 cursor-pointer">
+              <i class="fas fa-image cursor-pointer"></i>
+              <p class="cursor-pointer">Upload Photo</p>
+              <input
+                type="file"
+                accept="image/png, image/gif, image/jpeg"
+                class="opacity-0 absolute left-0 w-full cursor-pointer"
+              />
+            </div>
+          </div>
+
+          <div class="student-information-wrapper">
+            <h2 class="font-semibold text-xl mb-2">User Information</h2>
+
+            <!-- row 1 -->
+            <div class="input-row flex gap-4">
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/2">
+                <label for="" class="font-bold">First Name</label>
+                <input
+                  type="number"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/2">
+                <label for="" class="font-bold">Last Name</label>
+                <input
+                  type="text"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+            </div>
+            <!-- row 2 -->
+            <div class="input-row flex gap-4">
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/2">
+                <label for="" class="font-bold">Email</label>
+                <input
+                  type="number"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+              <div class="input-group flex flex-col gap-1 mb-6 w-1/2">
+                <label for="" class="font-bold">Contact Number</label>
+                <input
+                  type="text"
+                  class="border border-black rounded-md px-4 py-1"
+                />
+              </div>
+            </div>
+            <!-- row 3 -->
+
+            <div class="input-group flex flex-col gap-1 mb-6 w-full">
+              <label for="" class="font-bold">Company Name</label>
+              <input
+                type="text"
+                class="border border-black rounded-md px-4 py-1"
+              />
+            </div>
+
+            <!-- row 4 -->
+
+            <div class="input-group flex flex-col gap-1 mb-6 w-full">
+              <label for="" class="font-bold">Company Address</label>
+              <input
+                type="text"
+                class="border border-black rounded-md px-4 py-1"
+              />
+            </div>
+
+            <div class="input-group flex flex-col gap-1 mb-6 w-full">
+              <label for="" class="font-bold">User Type</label>
+              <input
+                type="text"
+                class="border border-black rounded-md px-4 py-1"
+              />
+            </div>
+          </div>
+
+          <div class="student-information-container"></div>
+        </form>
+
+
+      </div>
+    </div>
+  </body>
+  <!-- scripts  -->
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script>
+    var options = {
+      chart: {
+        type: "donut",
+      },
+      series: [55, 13],
+      labels: ["Enrolled Students", "Pending Enrollment"],
+    };
+
+    var chart = new ApexCharts(document.querySelector("#donutChart"), options);
+
+    chart.render();
+  </script>
+</html>
