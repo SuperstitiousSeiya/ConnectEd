@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/output.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+    <!-- font awesome  -->
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
+    />
+    <title>Login | ConnectEd</title>
+    <script src="../js/global/ajax.js"></script>
+    <script>
+      const token = localStorage.getItem("authenticateToken");
+
+      async function redirect(destination) {
+        const res = await fetchData("users/self");
+
+        if (res.status != 200) {
+          // window.location.href = "login.html";
+          return;
+        } else {
+          const userType = res.data.user.user_type;
+          if (userType == "admin") {
+            window.location.href = "admin_dashboard.html";
+          } else {
+            window.location.href = "student_dashboard.html";
+          }
+        }
+      }
+
+      redirect();
+    </script>
+    <script src="../js/global/form.js" defer></script>
+  </head>
+  <body>
+    <!-- wrapper  -->
+    <div
+      class="wrapper h-[100vh] flex px-[5rem] pt-10 justify-between min-h-[40rem]"
+    >
+      <!-- left  -->
+      <div class="left">
+        <img src="../assets/images/login/sitting-person.png" alt="" />
+      </div>
+      <div class="right pr-20">
+        <div class="logo-container pr-5">
+          <img src="../assets/images/logo/logo.png" alt="" />
+        </div>
+
+        <form
+          data-form-type="login"
+          data-form="POST"
+          data-success="redirect.html"
+          data-login
+        >
+          <div
+            class="mb-10 input-group flex gap-4 transition-all items-center border-b border-black pb-2 group focus-within:border-primary focus-within:border-b-2"
+          >
+            <i class="fa fa-user text-lg" aria-hidden="true"></i>
+            <input
+              type="text"
+              class="w-full outline-none text-lg"
+              placeholder="Username / Email Address"
+              name="username"
+            />
+          </div>
+
+          <div
+            class="mb-4 input-group flex gap-4 transition-all items-center border-b border-black pb-2 group focus-within:border-primary focus-within:border-b-2"
+          >
+            <i class="fa fa-lock text-lg" aria-hidden="true"></i>
+            <input
+              type="password"
+              class="w-full outline-none text-lg"
+              placeholder="Password"
+              name="password"
+            />
+          </div>
+
+          <p class="text-right cursor-pointer hover:underline mb-10">
+            Forgot Password?
+          </p>
+
+          <button class="mb-5 btn btn-primary font-bold w-full">Login</button>
+
+          <a href="register.html" class="text-center">
+            Not a member?
+            <span class="cursor-pointer underline text-primary"
+              >Register/Enroll</span
+            >
+          </a>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
