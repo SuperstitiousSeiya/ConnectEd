@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/933223bb08.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="news.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&family=Oswald:wght@600&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
+    <title>Enrollment System</title>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="landing_page.html"> <img src="images/logo.png"></a>
+            
+            <div class="nav-links">
+                <ul>
+                    <li><a href="landing_page.html">HOME</a></li>
+                    <li><a href="">NEWS</a></li>
+                    <li><a href="contact.html">CONTACT US</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="text-box">
+            <div class="text1">
+                <h1>NEWS</h1>
+                <hr style = "border:2px solid #ffffff; width: 100%; text-align: center; border-radius: 10px;"/>  
+            </div>
+        </div>
+    </section>
+    <div class="second-container">
+        <div class="second1">
+            <a href="">HOME</a>
+            <a href=""><img src="images/greaterthan.png" alt=""></a>
+            <a href="">NEWS</a>
+        </div>
+        <br><br><br><br><br>
+        <div class="second2">
+            <h1 onclick="showImage()">Newly-built iMAC Laboratories</h1>
+            <br>
+            <h2>OCTOBER 28, 2023 </h2>
+            <br><br>
+            <div class="image" id="show-image">
+                <img src="images/news2.png" alt="" width="100%" height="300px">
+                <br><br>    
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit incidunt molestiae ducimus voluptatem hic expedita. Minus illum praesentium, dolorem natus ab sequi ut! Cupiditate vel velit reiciendis sit? Labore, perferendis.</p>
+            </div>
+            <p id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+            <br><br>
+            <hr style = "border:1px solid #595959; width: 100%; text-align: center; border-radius: 10px;"/>  
+        </div>
+        <script>
+            function showImage(){
+                var showImage = document.getElementById('show-image');
+                var text = document.getElementById('text');
+                if(showImage.style.display === "none"){
+                    showImage.style.display = "block";
+                    text.style.display = "none";
+                }else{
+                    showImage.style.display = "none";
+                    text.style.display = "block";
+                }
+                
+            }
+        </script>
+        <br><br><br>
+        <div class="second2">
+            <h1>School Sponsors</h1>
+            <br>
+            <h2>OCTOBER 28, 2023 </h2>
+            <br><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+            <br><br>
+            <hr style = "border:1px solid #595959; width: 100%; text-align: center; border-radius: 10px;"/>  
+        </div>
+        <br><br><br>
+        <div class="second2">
+            <h1>Math Olympiad Winners</h1>
+            <br>
+            <h2>OCTOBER 28, 2023 </h2>
+            <br><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+            <br><br>
+            <hr style = "border:1px solid #595959; width: 100%; text-align: center; border-radius: 10px;"/>  
+        </div>
+        <br><br><br>
+        <div class="second2">
+            <h1>Faculty Treats</h1>
+            <br>
+            <h2>OCTOBER 28, 2023 </h2>
+            <br><br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.</p>
+            <br><br>
+            <hr style = "border:1px solid #595959; width: 100%; text-align: center; border-radius: 10px;"/>  
+        </div>
+    </div>
+    <br><br><br><br><br><br><br>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <ul>
+                        <li><a href="#">@Copyright Enrollment System <br>
+                            All Rights Reserved 2023</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>get help</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+</body>
+</html>
